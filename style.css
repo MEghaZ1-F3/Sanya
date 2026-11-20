@@ -5,14 +5,16 @@
 }
 
 :root {
-    --bg-cream: #faf6f0;
+    /* Dark Emerald & Light Mint/Sage Green Theme */
+    --bg-cream: #f2f6f3;               /* Soft Mint / Light Sage Background */
     --card-white: #ffffff;
-    --accent-terracotta: #d99b8c;
-    --accent-terracotta-dark: #c48272;
-    --text-dark: #2c2825;
-    --text-muted: #6e6863;
-    --border-soft: #e6dfd5;
-    --pill-bg: #f3ede4;
+    --accent-terracotta: #1e4d3b;      /* Primary Dark Forest/Emerald Green */
+    --accent-terracotta-dark: #133528; /* Deep Emerald Hover / Dark Accent */
+    --accent-sage-border: #8fa998;     /* Subtle Sage Green Frame Border */
+    --text-dark: #1b2d25;              /* Deep Forest Charcoal Text */
+    --text-muted: #52665c;             /* Muted Sage-Grey Text */
+    --border-soft: #d5e0d8;            /* Light Sage Divider Line */
+    --pill-bg: #e3ece6;                /* Soft Sage Pill Background */
 }
 
 body {
@@ -62,7 +64,7 @@ body {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 14px;
+    gap: 12px;
     margin-bottom: 45px;
 }
 
@@ -87,7 +89,7 @@ body {
 .pill-btn.active {
     background: var(--accent-terracotta);
     color: #ffffff;
-    box-shadow: 0 6px 16px rgba(217, 155, 140, 0.35);
+    box-shadow: 0 6px 16px rgba(30, 77, 59, 0.25);
 }
 
 .showcase-grid {
@@ -113,21 +115,21 @@ body {
     margin: 0 auto;
 }
 
-/* Peeche wala frame: Soft frosted/cream border */
+/* Peeche wala frame: Soft sage-tinted gallery frame */
 .photo-back {
     position: absolute;
     top: 0;
     left: 0;
     width: 260px;
     height: 350px;
-    padding: 6px;
+    padding: 7px;
     overflow: hidden;
-    background: #f3ede4;
-    border: 1px solid #dfd3c3;
-    box-shadow: 0 10px 25px rgba(44, 40, 37, 0.06);
+    background: #e6efe9;
+    border: 1px solid #c5d4ca;
+    box-shadow: 0 10px 25px rgba(27, 45, 37, 0.06);
 }
 
-/* Aage wala main frame: Crisp white gallery mat + thin gold-terracotta double line */
+/* Aage wala main frame: Crisp white gallery mat + sage-gold double line */
 .photo-front {
     position: absolute;
     right: 0;
@@ -136,18 +138,20 @@ body {
     height: 390px;
     padding: 10px;
     background: #ffffff;
-    border: 1px solid #d99b8c;
-    box-shadow: 0 20px 45px rgba(44, 40, 37, 0.12);
+    border: 1px solid var(--accent-sage-border);
+    box-shadow: 0 20px 45px rgba(27, 45, 37, 0.12);
 }
 
-/* Photo ke theek charo taraf ek patli inner hairline border */
+/* Photo ke theek charo taraf patli inner hairline border (Double Frame Effect) */
 .photo-front img {
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: top center;
-    border: 1px solid #e6d5c3;
+    border: 1px solid #c9d8ce;
+    padding: 3px;
+    background: #ffffff;
 }
 
 .photo-back img {
@@ -160,6 +164,7 @@ body {
 
 .details-panel {
     padding-right: 10px;
+    min-width: 0;
 }
 
 .tab-content {
@@ -222,7 +227,7 @@ body {
 }
 
 .info-row .label {
-    min-width: 155px;
+    min-width: 145px;
     color: var(--text-muted);
     font-weight: 500;
 }
@@ -232,6 +237,7 @@ body {
     color: var(--text-dark);
     font-weight: 500;
     text-align: right;
+    word-break: break-word;
 }
 
 .family-members {
@@ -268,6 +274,7 @@ body {
     font-family: Georgia, "Times New Roman", Times, serif;
     font-size: 17px;
     font-weight: 600;
+    color: var(--text-dark);
 }
 
 .member-nickname {
@@ -309,7 +316,7 @@ body {
     position: relative;
     min-height: 190px;
     padding: 16px;
-    box-shadow: 0 8px 20px rgba(44, 40, 37, 0.04);
+    box-shadow: 0 8px 20px rgba(27, 45, 37, 0.04);
 }
 
 .sibling-card .member-name {
@@ -323,9 +330,9 @@ body {
 .sibling-card .member-details {
     margin: 5px 0;
     padding: 6px 8px;
-    border-left: 2px solid var(--border-soft);
+    border-left: 2px solid var(--accent-sage-border);
     border-radius: 3px;
-    background: #faf8f5;
+    background: #f5f9f6;
 }
 
 .sibling-card .member-role strong,
@@ -376,7 +383,7 @@ body {
 }
 
 .editable:hover {
-    background: rgba(217, 155, 140, 0.12);
+    background: rgba(30, 77, 59, 0.08);
 }
 
 .editable:focus {
@@ -385,14 +392,19 @@ body {
     background: #ffffff;
 }
 
+/* Tablet & Small Laptop Responsive */
 @media (max-width: 880px) {
     .showcase-grid {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 36px;
+    }
+
+    .details-panel {
+        padding-right: 0;
     }
 
     .family-members {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .photo-collage {
@@ -416,5 +428,81 @@ body {
 
     .section-headline {
         font-size: 26px;
+    }
+}
+
+/* Mobile Phone Responsive (iPhone / Android) */
+@media (max-width: 540px) {
+    .page-wrapper {
+        padding: 18px 16px 32px;
+    }
+
+    .hero-name {
+        font-size: 30px;
+    }
+
+    .hero-subtitle {
+        font-size: 10px;
+        letter-spacing: 1.8px;
+    }
+
+    .pill-nav {
+        gap: 8px;
+        margin-bottom: 30px;
+    }
+
+    .pill-btn {
+        padding: 8px 14px;
+        font-size: 10px;
+        letter-spacing: 1px;
+    }
+
+    .photo-collage {
+        max-width: 300px;
+        height: 335px;
+    }
+
+    .photo-back {
+        width: 185px;
+        height: 255px;
+    }
+
+    .photo-front {
+        width: 225px;
+        height: 295px;
+        padding: 8px;
+    }
+
+    .section-headline {
+        font-size: 23px;
+    }
+
+    .family-members {
+        grid-template-columns: 1fr;
+    }
+
+    .sibling-card {
+        min-height: auto;
+    }
+
+    .info-row {
+        flex-direction: column;
+        gap: 3px;
+        padding: 9px 2px;
+    }
+
+    .info-row .label {
+        min-width: auto;
+        font-size: 12px;
+    }
+
+    .info-row .val {
+        text-align: left;
+        font-size: 14px;
+    }
+
+    .primary-cta {
+        width: 100%;
+        text-align: center;
     }
 }
