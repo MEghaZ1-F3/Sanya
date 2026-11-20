@@ -16,10 +16,10 @@
 }
 
 body {
-    background-color: var(--bg-cream);
+    min-height: 100vh;
+    background: var(--bg-cream);
     color: var(--text-dark);
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    min-height: 100vh;
     line-height: 1.6;
 }
 
@@ -29,37 +29,35 @@ body {
     padding: 25px 24px 40px;
 }
 
-/* Header */
 .main-header {
     text-align: center;
     padding-bottom: 18px;
 }
 
 .hero-name {
+    margin-bottom: 8px;
+    color: var(--accent-terracotta);
     font-family: Georgia, "Times New Roman", Times, serif;
     font-size: 46px;
     font-weight: 400;
-    color: var(--accent-terracotta);
     letter-spacing: 1px;
     line-height: 1.15;
-    margin-bottom: 8px;
 }
 
 .hero-subtitle {
+    color: var(--text-muted);
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 2.5px;
     text-transform: uppercase;
-    color: var(--text-muted);
 }
 
 .divider {
+    margin: 10px 0 28px;
     border: none;
     border-top: 1px solid var(--border-soft);
-    margin: 10px 0 28px;
 }
 
-/* Pill Navigation Tabs */
 .pill-nav {
     display: flex;
     justify-content: center;
@@ -69,11 +67,11 @@ body {
 }
 
 .pill-btn {
-    background-color: var(--pill-bg);
-    color: var(--text-dark);
-    border: 1px solid transparent;
     padding: 10px 22px;
+    border: 1px solid transparent;
     border-radius: 999px;
+    background: var(--pill-bg);
+    color: var(--text-dark);
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 1.3px;
@@ -87,12 +85,11 @@ body {
 }
 
 .pill-btn.active {
-    background-color: var(--accent-terracotta);
+    background: var(--accent-terracotta);
     color: #ffffff;
     box-shadow: 0 6px 16px rgba(217, 155, 140, 0.35);
 }
 
-/* Main Two-Column Showcase Layout */
 .showcase-grid {
     display: grid;
     grid-template-columns: 1fr 1.15fr;
@@ -100,7 +97,14 @@ body {
     align-items: center;
 }
 
-/* Left Side: Overlapping Photo Collage */
+.showcase-grid.photos-hidden {
+    grid-template-columns: 1fr;
+}
+
+.showcase-grid.photos-hidden .photo-collage {
+    display: none;
+}
+
 .photo-collage {
     position: relative;
     width: 100%;
@@ -109,73 +113,51 @@ body {
     margin: 0 auto;
 }
 
+/* Peeche wala frame: Soft frosted/cream border */
 .photo-back {
     position: absolute;
     top: 0;
     left: 0;
     width: 260px;
     height: 350px;
-    background-color: #dce4ec;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+    padding: 6px;
     overflow: hidden;
+    background: #f3ede4;
+    border: 1px solid #dfd3c3;
+    box-shadow: 0 10px 25px rgba(44, 40, 37, 0.06);
+}
+
+/* Aage wala main frame: Crisp white gallery mat + thin gold-terracotta double line */
+.photo-front {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 300px;
+    height: 390px;
+    padding: 10px;
+    background: #ffffff;
+    border: 1px solid #d99b8c;
+    box-shadow: 0 20px 45px rgba(44, 40, 37, 0.12);
+}
+
+/* Photo ke theek charo taraf ek patli inner hairline border */
+.photo-front img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    border: 1px solid #e6d5c3;
 }
 
 .photo-back img {
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
+    opacity: 0.92;
 }
 
-.photo-front {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 280px;
-    height: 365px;
-    background-color: #ffffff;
-    padding: 8px;
-    box-shadow: 0 18px 40px rgba(44, 40, 37, 0.14);
-}
-
-.photo-front img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-/* Subtle Photo Upload Triggers */
-.photo-edit-tag {
-    position: absolute;
-    background: rgba(44, 40, 37, 0.78);
-    color: #ffffff;
-    font-size: 10px;
-    letter-spacing: 0.8px;
-    text-transform: uppercase;
-    padding: 5px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    opacity: 0;
-    transition: opacity 0.2s ease;
-}
-
-.photo-back:hover .back-tag,
-.photo-front:hover .front-tag {
-    opacity: 1;
-}
-
-.back-tag {
-    top: 10px;
-    left: 10px;
-}
-
-.front-tag {
-    bottom: 16px;
-    right: 16px;
-}
-
-/* Right Side: Editorial Biodata Details */
 .details-panel {
     padding-right: 10px;
 }
@@ -190,63 +172,167 @@ body {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(6px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .eyebrow {
+    margin-bottom: 14px;
+    color: var(--accent-terracotta);
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--accent-terracotta);
-    margin-bottom: 14px;
 }
 
 .section-headline {
+    margin-bottom: 16px;
+    color: var(--text-dark);
     font-family: Georgia, "Times New Roman", Times, serif;
     font-size: 32px;
     font-weight: 400;
     line-height: 1.25;
-    color: var(--text-dark);
-    margin-bottom: 16px;
 }
 
 .intro-para {
-    font-size: 14.5px;
-    color: var(--text-muted);
     margin-bottom: 22px;
+    color: var(--text-muted);
+    font-size: 14.5px;
 }
 
-/* Clean Key-Value Biodata Rows */
 .info-table {
-    border-top: 1px solid var(--border-soft);
     margin-bottom: 24px;
+    border-top: 1px solid var(--border-soft);
 }
 
 .info-row {
     display: flex;
     justify-content: space-between;
+    gap: 15px;
     padding: 10px 4px;
     border-bottom: 1px solid var(--border-soft);
     font-size: 14px;
-    gap: 15px;
 }
 
 .info-row .label {
+    min-width: 155px;
     color: var(--text-muted);
     font-weight: 500;
-    min-width: 155px;
 }
 
 .info-row .val {
+    flex: 1;
     color: var(--text-dark);
     font-weight: 500;
     text-align: right;
-    flex: 1;
 }
 
-/* Meta Badges (Like BRANCH: CSE | SEMESTER: 7TH) */
+.family-members {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin: 0 0 24px;
+}
+
+.family-member-card,
+.sibling-card {
+    min-width: 0;
+    border: 1px solid var(--border-soft);
+    border-top: 3px solid var(--accent-terracotta);
+    border-radius: 6px;
+    background: var(--card-white);
+}
+
+.family-member-card {
+    padding: 14px;
+}
+
+.member-designation {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--accent-terracotta-dark);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+}
+
+.member-name {
+    margin-bottom: 5px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.member-nickname {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 7px 0;
+    color: var(--text-dark);
+    font-size: 11.5px;
+    font-weight: 600;
+}
+
+.nickname-label {
+    padding: 3px 7px;
+    border: 1px solid var(--border-soft);
+    border-radius: 999px;
+    background: var(--pill-bg);
+    color: var(--accent-terracotta-dark);
+    font-size: 8.5px;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+}
+
+.member-role,
+.member-details {
+    color: var(--text-muted);
+    font-size: 11.5px;
+    line-height: 1.5;
+}
+
+.member-role {
+    margin-bottom: 7px;
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+.sibling-card {
+    position: relative;
+    min-height: 190px;
+    padding: 16px;
+    box-shadow: 0 8px 20px rgba(44, 40, 37, 0.04);
+}
+
+.sibling-card .member-name {
+    margin: 2px 0 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-soft);
+    font-size: 18px;
+}
+
+.sibling-card .member-role,
+.sibling-card .member-details {
+    margin: 5px 0;
+    padding: 6px 8px;
+    border-left: 2px solid var(--border-soft);
+    border-radius: 3px;
+    background: #faf8f5;
+}
+
+.sibling-card .member-role strong,
+.sibling-card .member-details strong {
+    color: var(--accent-terracotta-dark);
+}
+
 .meta-badges {
     display: flex;
     flex-wrap: wrap;
@@ -255,24 +341,23 @@ body {
 }
 
 .badge {
-    background-color: var(--card-white);
-    border: 1px solid var(--border-soft);
     padding: 7px 14px;
+    border: 1px solid var(--border-soft);
     border-radius: 4px;
+    background: var(--card-white);
+    color: var(--text-dark);
     font-size: 10.5px;
     font-weight: 600;
     letter-spacing: 1px;
     text-transform: uppercase;
-    color: var(--text-dark);
 }
 
-/* Primary Terracotta CTA Button */
 .primary-cta {
-    background-color: var(--accent-terracotta);
-    color: #ffffff;
-    border: none;
     padding: 13px 28px;
+    border: none;
     border-radius: 4px;
+    background: var(--accent-terracotta);
+    color: #ffffff;
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 1.6px;
@@ -282,98 +367,53 @@ body {
 }
 
 .primary-cta:hover {
-    background-color: var(--accent-terracotta-dark);
+    background: var(--accent-terracotta-dark);
 }
 
-/* Editable Field Hover & Focus */
 .editable {
     border-radius: 3px;
     transition: background-color 0.2s ease;
 }
 
 .editable:hover {
-    background-color: rgba(217, 155, 140, 0.12);
+    background: rgba(217, 155, 140, 0.12);
 }
 
 .editable:focus {
-    outline: 1px dashed var(--accent-terracotta-dark);
-    background-color: #ffffff;
     padding: 2px 5px;
+    outline: 1px dashed var(--accent-terracotta-dark);
+    background: #ffffff;
 }
 
-/* Subtle Footer */
-.utility-footer {
-    margin-top: 55px;
-    padding-top: 18px;
-    border-top: 1px solid var(--border-soft);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    font-size: 12px;
-    color: var(--text-muted);
-}
-
-.utility-actions {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-}
-
-.util-link {
-    background: none;
-    border: none;
-    color: var(--accent-terracotta-dark);
-    font-size: 12px;
-    font-weight: 600;
-    cursor: pointer;
-    text-decoration: underline;
-}
-
-/* Print Mode: Prints ALL 4 Biodata Sections Cleanly Together */
-@media print {
-    body {
-        background: #ffffff;
-    }
-    .pill-nav, .cta-row, .photo-edit-tag, .utility-footer {
-        display: none !important;
-    }
-    .showcase-grid {
-        display: block;
-    }
-    .photo-collage {
-        margin-bottom: 30px;
-        height: 360px;
-    }
-    .tab-content {
-        display: block !important;
-        margin-bottom: 28px;
-        page-break-inside: avoid;
-    }
-}
-
-/* Mobile & Tablet Responsive */
 @media (max-width: 880px) {
     .showcase-grid {
         grid-template-columns: 1fr;
         gap: 40px;
     }
+
+    .family-members {
+        grid-template-columns: 1fr;
+    }
+
     .photo-collage {
         max-width: 360px;
         height: 390px;
     }
+
     .photo-back {
         width: 220px;
         height: 300px;
     }
+
     .photo-front {
-        width: 240px;
-        height: 315px;
+        width: 260px;
+        height: 340px;
     }
+
     .hero-name {
         font-size: 36px;
     }
+
     .section-headline {
         font-size: 26px;
     }
