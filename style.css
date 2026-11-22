@@ -458,14 +458,14 @@ body {
     .photo-front {
         width: 225px;
         height: 295px;
-        padding: 1%;
+        padding: 0%;
         background: #ffffff;
         border: 1px solid var(--accent-sage-border);
     }
 
     .photo-front img {
         border: 1px solid #c9d8ce;
-        padding: 1px;
+        padding: 0px;
         background: #ffffff;
     }
 
