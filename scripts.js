@@ -8,6 +8,9 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+    const showcaseGrid = document.querySelector(".showcase-grid");
+    showcaseGrid?.classList.toggle("photos-hidden", tabId !== "personal");
+
     tabButtons.forEach((button) => {
       const isActive = button.dataset.target === tabId;
       button.classList.toggle("active", isActive);
