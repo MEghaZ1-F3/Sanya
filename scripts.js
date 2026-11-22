@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
   tabButtons.forEach((button) => {
     button.setAttribute("role", "tab");
     button.setAttribute("tabindex", button.classList.contains("active") ? "0" : "-1");
-    button.addEventListener("click", () => openTab(button.dataset.target, true));
+    button.addEventListener("click", () => openTab(button.dataset.target));
   });
 
   tabContents.forEach((content) => {
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   Object.entries(tabLinks).forEach(([buttonId, tabId]) => {
-    document.getElementById(buttonId)?.addEventListener("click", () => openTab(tabId, true));
+    document.getElementById(buttonId)?.addEventListener("click", () => openTab(tabId));
   });
 
   openTab(document.querySelector(".pill-btn.active")?.dataset.target || "personal");
