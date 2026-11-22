@@ -459,6 +459,14 @@ body {
         width: 225px;
         height: 295px;
         padding: 5px;
+        background: #ffffff;
+        border: 1px solid var(--accent-sage-border);
+    }
+
+    .photo-front img {
+        border: 1px solid #c9d8ce;
+        padding: 1px;
+        background: #ffffff;
     }
 
     .section-headline {
